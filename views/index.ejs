@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="article-list">
+        <% for(var i=0; i<data.length; i++){%>
+            <a href="/article/<%=data[i]._id%>">
+                <div class="article-card" key="<%=data[i]._id%>">
+                    <div class="article-header">
+                        <div style="display: inline-block;">
+                            <h3 class="article-title"><%=data[i].title%></h3>
+                            <div class="article-nickname"><%=data[i].nickname%></div>
+                        </div>
+                        <div style="display: inline-block;">
+                            <div class="article-date"><%=data[i].created_date%></div>
+                        </div>
+                    </div>
+                    <div class="article-content"><%=data[i].content%></div>
+                </div>
+            </a>
+            <%}%>
+            <div class="paging-container">
+                <%for(var i=0; i<Math.floor(data.length/20)+1; i++){%>
+                <a href="/<%=i%>"><div class="paging"><%=i+1%></div></a>
+                <%}%>
+            </div>
+        </div>
+        <form action="/addArticle" method="POST">
+            <input class="inp-article" type="text" name="title" placeholder="input article title here"><br/>
+            <input class="inp-article" type="text" name="nickname" placeholder="input article nickname here"><br/>
+            <textarea class="inp-article" rows="5" name="content" placeholder="input article content here"></textarea><br/>
+            <input type="submit" value="OK">
+        </form>
+        <p><%=message%></p>
+    </div>
+</body>
+</html>

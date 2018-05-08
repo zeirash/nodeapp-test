@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    width: 40%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.back-button {
+    position: fixed;
+    top: .5em;
+    left: 2em;
+}
+
+.paging-container {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.paging {
+    display: inline;
+    background-color: #ccc;
+    padding: .4em;
+    margin: .3em;
+}
+
+/*article*/
+.article-list {
+    overflow: scroll;
+    height: 500px;
+    margin-bottom: .5em;
+}
+
+.article-card {
+    padding: 1.5em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 10px;
+    margin: .5em 0;
+}
+
+.article-header {
+    position: relative;
+}
+
+.article-title {
+    margin-right: 3em;
+    margin-bottom: .5em;
+}
+
+.article-content {
+    margin-top: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; 
+}
+
+.article-content.full {
+    text-overflow: unset;
+    display: block;
+}
+
+.article-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.inp-article {
+    margin-bottom: .5em;
+    width: 100%;
+}
+
+/*comment*/
+.comment-container {
+    bottom: 10px;
+    background-color: #ccc;
+}
+
+.comment-list {
+    overflow: scroll;
+    height: 280px;
+}
+
+.comment-card {
+    padding: 1em;
+    border-bottom: 1px solid #606060;
+    position: relative;
+}
+
+.comment-content {
+    margin-top: .5em;
+}
+
+.comment-write {
+    border-top: 1px solid #606060;
+    margin-top: 1em;
+    padding-top: .5em;
+    background-color: #fff;
+}
+
+.comment-date {
+    position: absolute;
+    top: 1em;
+    right: .5em;
+}
+
+.inp-comment {
+    margin-bottom: .5em;
+    width: 100%;
+}
+
+/*reply*/
+
+.reply-button {
+    padding: .3em;
+    margin-top: .5em;
+}
+
+.reply-form {
+    display: none;
+    margin-top: .5em;
+}
+
+.inp-reply {
+    width: 100%;
+}
+
+.reply-list {
+    margin-left: 3em;
+    margin-right: -1em;
+}
+
+.reply-nickname {
+    text-align: right;
+}
+
+.reply-content {
+    text-align: right;
+    margin-top: .5em;
+}
+
+.reply-date {
+    position: absolute;
+    top: .3em;
+    left: .5em
+}
+
+.reply-card {
+    position: relative;
+    background-color: #f5f5f5;
+    padding: .3em;
+    border-bottom: 1px solid #606060;
+}

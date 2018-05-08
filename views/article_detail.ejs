@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
+</head>
+<body>
+    <a href="/">
+    <div class="back-button"><i class="fa fa-arrow-left" style="font-size: 34px;"></i></div>
+    </a>
+    <div class="main">
+        <div class="article-card">
+            <div class="article-header">
+                <div style="display: inline-block;">
+                    <h2 class="article-title"><%=data.title%></h2>
+                    <div class="article-nickname"><%=data.nickname%></div>
+                </div>
+                <div style="display: inline-block;">
+                    <div class="article-date"><%=data.created_date%></div>
+                </div>
+            </div>
+            <div class="article-content full"><%=data.content%></div>
+        </div>
+        <div class="comment-container">
+            <div class="comment-list">
+                <%for(var i=0; i<data.comments.length; i++){%>
+                <div class="comment-card">
+                    <h4 class="comment-nickname"><%=data.comments[i].nickname%></h4>
+                    <div class="comment-date"><%=data.comments[i].created_date%></div>
+                    <div class="comment-content"><%=data.comments[i].content%></div>
+                    <button type="button" onclick="toggleForm('<%=i%>');" class="reply-button" value="Reply">Reply</button>
+                    <div class="reply-form" id="reply-form">
+                        <form action="/addReply/<%=data._id%>/<%=data.comments[i]._id%>" method="POST">
+                            <input class="inp-reply" type="text" name="nickname" placeholder="input reply nickname here"><br/>
+                            <textarea class="inp-reply" rows="5" name="content" placeholder="input reply content here"></textarea><br/>
+                            <input type="submit" value="OK">
+                        </form>
+                    </div>
+                    <%for(var j=0; j<data.comments[i].replies.length; j++){%>
+                    <div class="reply-list">
+                        <div class="reply-card">
+                            <h4 class="reply-nickname"><%=data.comments[i].replies[j].nickname%></h4>
+                            <div class="reply-date"><%=data.comments[i].replies[j].created_date%></div>
+                            <div class="reply-content"><%=data.comments[i].replies[j].content%></div>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+                <%}%>
+            </div>
+            <div class="comment-write">
+                <h3>Comment here:</h3>
+                <form action="/addComment/<%=data._id%>" method="POST">
+                    <input class="inp-comment" type="text" name="nickname" placeholder="input comment nickname here"><br/>
+                    <textarea class="inp-comment" rows="5" name="content" placeholder="input comment content here"></textarea><br/>
+                    <input type="submit" value="OK">
+                </form>
+                <p><%=message%></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function toggleForm(i){
+            var x=document.getElementsByClassName('reply-form');
+            if(x[i].style.display == "none") {
+                x[i].style.display = "block";
+            } else {x[i].style.display = "none";}
+    }
+    </script>
+</body>
+</html>
