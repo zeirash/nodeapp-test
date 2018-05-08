@@ -1,16 +1,20 @@
 var ObjectID = require('mongodb').ObjectID;
 var themessage = '';
+var articles;
 
 module.exports = function(app, db){
     app.get('/:page?', (req,res) => {
         const page = req.params.page;
         /*const details = {'_id': new ObjectID(id)}*/
+        db.collection('articles').find({}).toArray((err,item)=>{
+            ilength=item.length;
+        })
         db.collection('articles').find({}).limit(20).skip(page*20).toArray((err, item) => {
             if(err){
                 res.send({'error': 'there is an error'})
             } else {
                 if(item.length)
-                res.render('index',{data:item,message:themessage});
+                res.render('index',{data:item,message:themessage,articles:ilength});
             }
         })
     })
