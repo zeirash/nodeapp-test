@@ -5,7 +5,7 @@ const db = require('./config/db.js');
 
 const app = express();
 
-const port = 8080;
+const port = 80;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}))
